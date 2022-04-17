@@ -1,5 +1,7 @@
 <?php
   $h = date('H') + 3;
+//  $img = ($h / 6) % 4
+  $img = (int)($h / 6)
 ?>
 
 <!doctype html>
@@ -12,19 +14,20 @@
   <title>Document</title>
     <style>
         body{
-          background: url(img/<?php echo $h % 4;?>.jpg);
+          background: url(img/<?php echo $img;?>.jpg);
           background-size: cover;
           color: red;
         }
     </style>
 </head>
   <body>
-  <h1><?php echo $h?></h1>
+  <h1 data-time="<?php echo $img?>"><?php echo $h?></h1>
+  <h2></h2>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
-
+<script src="index.js"></script>
 </body>
 </html>
