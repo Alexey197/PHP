@@ -1,8 +1,7 @@
 <?php
   $h = date('H') + 3;
-//  $img = ($h / 6) % 4
   $img = (int)($h / 6);
-  $time = '';
+  $time = 'Ночь';
 ?>
 
 <!doctype html>
@@ -16,7 +15,7 @@
     <style>
         body{
           background: url(img/<?php echo $img;?>.jpg);
-          /*background-size: cover;*/
+          background-size: cover;
           color: red;
         }
     </style>
@@ -31,8 +30,6 @@
         $time = 'День';
     } elseif ($img == '3') {
         $time = 'Вечер';
-    } elseif ($img == '4') {
-        $time = 'Ночь';
     }
       echo $time;
     ?>
