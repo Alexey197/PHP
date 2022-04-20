@@ -2,6 +2,16 @@
   $h = date('H') + 3;
   $img = (int)($h / 6);
   $time = 'Ночь';
+
+  const MIN = 'минут';
+  function get_min($a) {
+    if (($a >= 5 && $a <= 20) || ($a == 0) || ($a % 10 == 0) || ($a % 10 >= 5 && $a % 10 <= 9)) {
+      return $a . MIN;
+    } elseif (($a >= 2 && $a <= 4) || ($a % 10 >= 2 && $a % 10 <= 4)) {
+      return $a . MIN . 'ы';
+    }
+    return $a . MIN . 'а';
+  }
 ?>
 
 <!doctype html>
@@ -34,6 +44,7 @@
       echo $time;
     ?>
   </h2>
+  <h3><?php echo get_min(30) ?></h3>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
