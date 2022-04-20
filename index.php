@@ -3,14 +3,21 @@
   $img = (int)($h / 6);
   $time = 'Ночь';
 
-  const MIN = 'минут';
-  function get_min($a) {
-    if ($a == 1 || $a % 10 == 1) {
-      return $a . MIN . 'а';
-    } elseif (($a >= 2 && $a <= 4) || ($a % 10 >= 2 && $a % 10 <= 4)) {
-      return $a . MIN . 'ы';
+  const MIN = ['минут', 'минута', 'минуты'];
+
+  const SEC = ['секунд', 'секунда', 'секунды'];
+
+const DAY = ['дней', 'день', 'дня'];
+
+  function get_min($a, $arr) {
+    if ($a % 10 == 1) {
+      return $a . $arr[1];
+    } elseif ($a % 100 >= 5 && $a % 100 <= 20) {
+        return $a . $arr[0];
+    } elseif ($a % 10 >= 2 && $a % 10 <= 4) {
+      return $a . $arr[2];
     }
-    return $a . MIN;
+    return $a . $arr[0];
   }
 ?>
 
@@ -44,7 +51,7 @@
       echo $time;
     ?>
   </h2>
-  <h3><?php echo get_min(21) ?></h3>
+  <h3><?php echo get_min(63, DAY) ?></h3>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
