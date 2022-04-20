@@ -5,12 +5,12 @@
 
   const MIN = 'минут';
   function get_min($a) {
-    if (($a >= 5 && $a <= 20) || ($a == 0) || ($a % 10 == 0) || ($a % 10 >= 5 && $a % 10 <= 9)) {
-      return $a . MIN;
+    if ($a == 1 || $a % 10 == 1) {
+      return $a . MIN . 'а';
     } elseif (($a >= 2 && $a <= 4) || ($a % 10 >= 2 && $a % 10 <= 4)) {
       return $a . MIN . 'ы';
     }
-    return $a . MIN . 'а';
+    return $a . MIN;
   }
 ?>
 
@@ -44,7 +44,7 @@
       echo $time;
     ?>
   </h2>
-  <h3><?php echo get_min(30) ?></h3>
+  <h3><?php echo get_min(21) ?></h3>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
