@@ -3,6 +3,14 @@
   $img = (int)($h / 6);
   $time = 'Ночь';
 
+//  echo '<pre>';
+//    print_r($_GET);
+//  echo '</pre>';
+
+  $id = $_GET['id'];
+
+  $text = file_get_contents("data/$id.txt");
+
   const MIN = ['минут', 'минута', 'минуты'];
 
   const SEC = ['секунд', 'секунда', 'секунды'];
@@ -43,6 +51,9 @@
           background-size: cover;
           color: red;
         }
+        .text{
+          color: coral;
+        }
     </style>
 </head>
   <body>
@@ -59,9 +70,12 @@
       echo $time;
     ?>
   </h2>
-  <h3><?php echo get_min(63, DAY) ?></h3>
-  <p>lorem</p>
-  <p>lorem</p>
+  <h3><?php echo get_min(365, SEC) ?></h3>
+  <p class="text">
+      <?php
+      echo nl2br($text);
+      ?>
+  </p>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
