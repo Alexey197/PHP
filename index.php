@@ -11,6 +11,10 @@
 
   $text = file_get_contents("data/$id.txt");
 
+  if (!isset($_GET['id'])) {
+      exit('Нет id! - 404');
+  }
+
   const MIN = ['минут', 'минута', 'минуты'];
 
   const SEC = ['секунд', 'секунда', 'секунды'];
@@ -70,7 +74,13 @@
       echo $time;
     ?>
   </h2>
-  <h3><?php echo get_min(365, SEC) ?></h3>
+  <h3><?php echo get_min(364, DAY) ?></h3>
+  <?php
+    for ($i = 1; $i < 4; $i++) {
+        echo "<a href=\"index.php?id=$i\">Статья $i</a>";
+    }
+  ?>
+
   <p class="text">
       <?php
       echo nl2br($text);
