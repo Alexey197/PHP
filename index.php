@@ -10,12 +10,18 @@
 //  $files = scandir('data');
 //  var_dump($files);
 
+
   if (count($_POST) > 0) {
       $name = $_POST['name'];
       $phone = $_POST['phone'];
-
-      file_put_contents('apps.txt', "$name $phone\n", FILE_APPEND);
-      echo  'Ваша заявка принята, ожидайте звонка!';
+      if (strlen(str_replace(' ', '', $name)) < 2) {
+          echo  'Имя должно быть не короче двух символов!<br>';
+      } elseif (!ctype_digit($phone)) {
+          echo  'Номер телефона должен состоять из цифр!<br>';
+      } else {
+          file_put_contents('apps.txt', "$name $phone\n", FILE_APPEND);
+          echo  'Ваша заявка принята, ожидайте звонка!<br>';
+      }
   }
 
   const MIN = ['минут', 'минута', 'минуты'];
@@ -25,10 +31,24 @@
   const DAY = ['дней', 'день', 'дня'];
 
   $capitals = [
-      'Россия' => ['Москва', 'Санкт-Петербург', 'Новосибирск'],
+      'Россия' => ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Омск'],
       'Франция' => ['Париж', 'Марсель', 'Ницца'],
-      'Англияия' => ['Лондон', 'Ливерпуль', 'Бирмингем']
+      'Англия' => ['Лондон', 'Ливерпуль', 'Бирмингем']
   ];
+
+  echo '<ul>';
+
+  foreach ($capitals as $country => $towns) {
+    echo '<li>';
+    echo $country;
+    echo '<ol>';
+    foreach ($towns as $town) {
+      echo "<li>$town</li>";
+    };
+    echo '</ol></li>';
+  }
+
+echo '</ul>';
 
 
 
@@ -58,9 +78,6 @@
           background-size: cover;
           color: red;
         }
-        .text{
-          color: coral;
-        }
     </style>
 </head>
   <body>
@@ -77,18 +94,14 @@
       echo $time;
     ?>
   </h2>
-  <h3><?php echo get_min(364, DAY) ?></h3>
+  <h3><?php echo get_min(360, DAY) ?></h3>
   <?php
     for ($i = 1; $i < 4; $i++) {
         echo "<a href=\"index.php?id=$i\">Статья $i</a>";
     }
   ?>
 
-  <p class="text">
-      <?php
-      echo nl2br($text);
-      ?>
-  </p>
+  <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
   <p>lorem</p>
